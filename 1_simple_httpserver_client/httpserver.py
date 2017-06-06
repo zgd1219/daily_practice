@@ -15,12 +15,9 @@ while True:
     connection, addr = s.accept()
     print('客户端{}已连接'.format(addr))
 
-
     raw_request = connection.recv(1024)
     request = raw_request.decode('utf-8')
     print('ip and request, {}\n{}'.format(addr, request))
     connection.sendall('HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n'
                        '<h3>Hello world!</h3>'.encode('utf-8'))
     connection.close()
-
-
